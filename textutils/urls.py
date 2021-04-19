@@ -20,7 +20,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
     path('analyze/', views.analyze, name='analyze'),
-    # path('remP/', views.removePunc, name='remP'),
+    # path('removepunc/', views.removePunc, name='remP'),
     # path('capF/', views.capFirst, name='capF'),
     # path('newLR/', views.newLineRemove, name='newLR'),
     # path('spcR/', views.spaceRemove, name='spcR'),
