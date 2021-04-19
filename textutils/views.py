@@ -6,28 +6,51 @@ def index(request):
     return render(request, 'index.html')#, parameters)
     #return HttpResponse('Hello, This is Home Page!')
 
-def removePunc(request):
-    get_text = request.GET.get('text', 'default')
-    print(get_text) 
-    #print(request.GET.get('text', 'default'))
-    return HttpResponse('''Remove Puncuations <br>
-    <a href="/">Back</a>''')
+def analyze(request):
+    #Get the text
+    djtext = request.GET.get('text', 'default')
 
-def capFirst(request):
-    return HttpResponse('''Captilize First <br>
-    <a href="/">Back</a>''')
+    # Check checkbox values
+    removepunc = request.GET.get('remP', 'off')
+    fullcaps = request.GET.get('fullcaps', 'off')
+    newlineremover = request.GET.get('newlineremover', 'off')
+    extraspaceremover = request.GET.get('extraspaceremover', 'off')
 
-def newLineRemove(request):
-    return HttpResponse('''Remove New Line <br>
-    <a href="/">Back</a>''')
+    #Check which checkbox is on
+    if removepunc == "on":
+        punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
+        analyzed = ""
+        for char in djtext:
+            if char not in punctuations:
+                analyzed = analyzed + char
+        params = {'purpose':'Removed Punctuations', 'analyzed_text': analyzed}
+        return render(request, 'analyze.html', params)
 
-def spaceRemove(request):
-    return HttpResponse('''Remove Spaces <br>
-    <a href="/">Back</a>''')
+    else:
+        return HttpResponse("Error")
 
-def charCount(request):
-    return HttpResponse('''Count Character <br>
-    <a href="/">Back</a>''')
+# def removePunc(request):
+#     get_text = request.GET.get('text', 'default')
+#     print(get_text) 
+#     #print(request.GET.get('text', 'default'))
+#     return HttpResponse('''Remove Puncuations <br>
+#     <a href="/">Back</a>''')
+
+# def capFirst(request):
+#     return HttpResponse('''Captilize First <br>
+#     <a href="/">Back</a>''')
+
+# def newLineRemove(request):
+#     return HttpResponse('''Remove New Line <br>
+#     <a href="/">Back</a>''')
+
+# def spaceRemove(request):
+#     return HttpResponse('''Remove Spaces <br>
+#     <a href="/">Back</a>''')
+
+# def charCount(request):
+#     return HttpResponse('''Count Character <br>
+#     <a href="/">Back</a>''')
 
 # def about (request):
 #     return HttpResponse('Mahima Jain')

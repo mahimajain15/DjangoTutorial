@@ -19,11 +19,12 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('remP/', views.removePunc, name='remP'),
-    path('capF/', views.capFirst, name='capF'),
-    path('newLR/', views.newLineRemove, name='newLR'),
-    path('spcR/', views.spaceRemove, name='spcR'),
-    path('chrC/', views.charCount, name='chrC'),
+    path('analyze/', views.analyze, name='analyze'),
+    # path('remP/', views.removePunc, name='remP'),
+    # path('capF/', views.capFirst, name='capF'),
+    # path('newLR/', views.newLineRemove, name='newLR'),
+    # path('spcR/', views.spaceRemove, name='spcR'),
+    # path('chrC/', views.charCount, name='chrC'),
 
     # path('about', views.about, name='about'),
     # path('read', views.readText, name='read'),
