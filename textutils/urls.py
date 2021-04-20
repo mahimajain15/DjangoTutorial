@@ -19,7 +19,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.index, name='index'),
-    path('analyze/', views.analyze, name='analyze'),
+    path('analyze', views.analyze, name='analyze'),
     # path('removepunc/', views.removePunc, name='remP'),
     # path('capF/', views.capFirst, name='capF'),
     # path('newLR/', views.newLineRemove, name='newLR'),
