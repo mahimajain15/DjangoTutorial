@@ -42,7 +42,9 @@
     </div>
 
     <div class="container">
-      <form action='/analyze' method='post'>{% csrf_token %}
+      <form action='/analyze' method='post'>{% csrf_token %} 
+      {% comment %} We have used csrf_token because we want to 
+      secure our website by hackers as by using this, we can hide information from url  {% endcomment %}
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Enter your text here:</label>
           <textarea class="form-control" name='text' id="exampleFormControlTextarea1" rows="5"></textarea>
@@ -69,8 +71,13 @@
         </div>
 
         <div class="custom-control custom-switch">
-          <input type="checkbox"  name="charcnt" class="custom-control-input" id="customSwitch5">
-          <label class="custom-control-label" for="customSwitch5">Character Counter</label>
+          <input type="checkbox"  name="wordcnt" class="custom-control-input" id="customSwitch5">
+          <label class="custom-control-label" for="customSwitch5">Words Counter</label>
+        </div>
+
+        <div class="custom-control custom-switch">
+          <input type="checkbox"  name="reverse" class="custom-control-input" id="customSwitch6">
+          <label class="custom-control-label" for="customSwitch6">Reverse Everthing</label>
         </div>
 
         <button type="submit" class="btn btn-dark mt-2">Analyze</button>

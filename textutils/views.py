@@ -15,8 +15,8 @@ def analyze(request):
     fullcaps = request.POST.get('fullcaps', 'off')
     newlineremover = request.POST.get('newlineremover', 'off')
     extraspaceremover = request.POST.get('extraspaceremover', 'off')
-    charcnt = request.POST.get('charcnt', 'off')
-
+    wordcnt = request.POST.get('wordcnt', 'off')
+    reverse = request.POST.get('reverse', 'off')
     #Check which checkbox is on
     if removepunc == "on":
         punctuations = '''!()-[]{};:'"\,<>./?@#$%^&*_~'''
@@ -54,7 +54,7 @@ def analyze(request):
         djtext = analyzed
         # return render(request, 'analyze.html', params)
 
-    if charcnt == "on":
+    if wordcnt == "on":
         cnt=0
         for x in djtext.split():
             cnt+=1
@@ -62,7 +62,12 @@ def analyze(request):
         djtext = cnt
         # return render(request, 'analyze.html', params)
 
-    if (removepunc!='on' and fullcaps !='on' and newlineremover!='on' and extraspaceremover!='on' and charcnt!='on'):
+    if reverse == "on":
+        analyzed = djtext[::-1]
+        params = {'purpose':' reversed the string ', 'analyzed_text': analyzed}
+        djtext = analyzed
+
+    if (removepunc!='on' and fullcaps !='on' and newlineremover!='on' and extraspaceremover!='on' and wordcnt!='on' and reverse!='on'):
         return HttpResponse('!! E R R O R !!')
 
     return render(request, 'analyze.html', params)
